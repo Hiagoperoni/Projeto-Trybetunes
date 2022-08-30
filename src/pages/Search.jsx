@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class PageSearch extends React.Component {
+export default class Search extends React.Component {
   render() {
     return (
-      <div>
+      <div data-testid="page-search">
         <p>Search</p>
       </div>
     );

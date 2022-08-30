@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class PageError extends React.Component {
+export default class NotFound extends React.Component {
   render() {
     return (
-      <div>
+      <div data-testid="page-not-found">
         <p>ERRO 404</p>
       </div>
     );

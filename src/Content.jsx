@@ -1,25 +1,25 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import PageAlbum from './pages/PageAlbum';
-import PageEditProfile from './pages/PageEditProfile';
-import PageError from './pages/PageError';
-import PageFavorites from './pages/PageFavorites';
-import PageLogin from './pages/PageLogin';
-import PageProfile from './pages/PageProfile';
-import PageSearch from './pages/PageSearch';
+import Album from './pages/Album';
+import ProfileEdit from './pages/ProfileEdit';
+import NotFound from './pages/NotFound';
+import Favorites from './pages/Favorites';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Search from './pages/Search';
 
 export default class Content extends React.Component {
   render() {
     return (
       <main>
         <Switch>
-          <Route exact path="/search" component={ PageSearch } />
-          <Route exact path="/album/:id" component={ PageAlbum } />
-          <Route exact path="/favorites" component={ PageFavorites } />
-          <Route exact path="/profile" component={ PageProfile } />
-          <Route exact path="/profile/edit" component={ PageEditProfile } />
-          <Route exact path="/" component={ PageLogin } />
-          <Route exact path="/*" component={ PageError } />
+          <Route exact path="/search" component={ Search } />
+          <Route exact path="/album/:id" component={ Album } />
+          <Route exact path="/favorites" component={ Favorites } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/profile/edit" component={ ProfileEdit } />
+          <Route exact path="/" component={ Login } />
+          <Route exact path="/*" component={ NotFound } />
         </Switch>
       </main>
     );

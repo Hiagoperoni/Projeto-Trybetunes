@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class PageProfile extends React.Component {
+export default class Profile extends React.Component {
   render() {
     return (
-      <div>
+      <div data-testid="page-profile">
         <p>Profile</p>
       </div>
     );

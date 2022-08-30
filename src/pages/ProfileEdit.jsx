@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class PageEditProfile extends React.Component {
+export default class ProfileEdit extends React.Component {
   render() {
     return (
-      <div>
+      <div data-testid="page-profile-edit">
         <p>Edit Profile</p>
       </div>
     );

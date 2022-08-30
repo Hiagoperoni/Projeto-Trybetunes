@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class PageFavorites extends React.Component {
+export default class Favorites extends React.Component {
   render() {
     return (
-      <div>
+      <div data-testid="page-favorites">
         <p>Favourites</p>
       </div>
     );
