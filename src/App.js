@@ -12,6 +12,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     const { carregando } = this.state;
+    console.log(carregando);
     this.setState({ carregando: true });
     await this.pegarUserName();
     this.setState({ carregando: false });
