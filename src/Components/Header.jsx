@@ -1,15 +1,20 @@
 import React from 'react';
-import { getUser } from '../services/userAPI';
+import { PropTypes } from 'prop-types';
 
-export class Header extends React.Component {
+class Header extends React.Component {
   render() {
+    const { nomeCabecalho } = this.props;
     return (
       <header data-testid="header-component">
-        <p>TrybeTunes</p>
-        <p data-testid="header-user-name">{ getUser }</p>
+        <p>Cabeçalho</p>
+        <p data-testid="header-user-name">{ nomeCabecalho }</p>
       </header>
     );
   }
 }
+
+Header.propTypes = {
+  nomeCabecalho: PropTypes.string.isRequired,
+};
 
 export default Header;
