@@ -14,15 +14,11 @@ class Header extends React.Component {
   }
 
   montarCabecalho = async () => {
-    const { loading } = this.state;
-    // console.log(loading);
     await this.pegarUserName()
       .then(() => { this.setState({ loading: false }); });
   };
 
   pegarUserName = async () => {
-    const { nomeUsuario } = this.state;
-    // console.log(nomeUsuario);
     const infoUsuario = await getUser();
     const nomeUser = infoUsuario.name;
     this.setState({ nomeUsuario: nomeUser });
