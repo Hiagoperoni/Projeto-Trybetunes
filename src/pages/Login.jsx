@@ -12,8 +12,7 @@ export default class Login extends React.Component {
   };
 
   verificarUser = () => {
-    const { userName, canEnter } = this.state;
-    console.log(canEnter);
+    const { userName } = this.state;
     const minTamanho = 3;
     const bateuTamanhoMin = userName.length >= minTamanho;
     this.setState({ canEnter: !bateuTamanhoMin });
@@ -29,15 +28,13 @@ export default class Login extends React.Component {
   };
 
   mudarRequisicao = () => {
-    const { requisicao } = this.state;
-    console.log(requisicao);
     this.salvarEMudarPage();
     return <Redirect to="/search" />;
   };
 
   salvarEMudarPage = async () => {
-    const { userName, requisicao } = this.state;
-    console.log(requisicao);
+    const { userName } = this.state;
+
     this.setState({ loading: true });
     await createUser({ name: userName })
       .then(() => { this.setState({ requisicao: true }); });
