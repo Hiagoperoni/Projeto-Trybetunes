@@ -50,6 +50,7 @@ class Album extends React.Component {
         {
           todasAsMusicas.map((cadaMusica) => (
             <MusicCard
+              arrayMusicas={ todasAsMusicas }
               key={ cadaMusica.trackName }
               trackName={ cadaMusica.trackName }
               previewUrl={ cadaMusica.previewUrl }

@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { addSong } from '../services/favoriteSongsAPI';
-// import Loading from './Loading';
+import { addSong } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 class MusicCard extends Component {
-  // state = {
-  //   loading: false,
-  // };
+  state = {
+    carregando: false,
+    adicionouFavoritas: false,
+  };
 
-  // salvarNosFavoritos = () => {
-  //   const { trackId } = this.props;
-  //   this.setState({ loading: true })
-  //     .then(() => addSong(trackId))
-  //     .then(() => this.setState({ loading: false }));
-  // };
+  pegarMusicas = async (trackId) => {
+    const { arrayMusicas } = this.props;
+    this.setState({ carregando: true });
+    const musicaEscolhida = arrayMusicas.filter((aMusica) => aMusica.trackId === trackId);
+    await addSong(musicaEscolhida);
+    localStorage.setItem('checked', true);
+    this.setState({ carregando: false });
+  };
 
   render() {
     const { trackName, previewUrl, trackId } = this.props;
-    // const { loading } = this.state;
-    // if (loading === true) {
-    //   return <Loading />;
-    // }
-    return (
+    const { carregando, adicionouFavoritas } = this.state;
+    const montarPagina = (
       <div>
         <h4>{trackName}</h4>
         <audio data-testid="audio-component" src={ previewUrl } controls>
@@ -32,8 +32,26 @@ class MusicCard extends Component {
           <code>audio</code>
           .
         </audio>
-        <p>{trackId}</p>
-        {/* <input type="checkbox" onChecked={ this.salvarNosFavoritos() } /> */}
+        <label htmlFor="favoritar">
+          Favorita
+          <input
+            id="favoritar"
+            type="checkbox"
+            checked={ localStorage.getItem('checked') }
+            data-testid={ `checkbox-music-${trackId}` }
+            onChange={ () => this.pegarMusicas(trackId) }
+          />
+        </label>
+      </div>);
+    // const carregarPagina = carregando ? <Loading /> : montarPagina;
+    return (
+      <div>
+        {/* {
+          adicionouFavoritas ? montarPagina : carregarPagina
+        } */}
+        {
+          carregando ? <Loading /> : montarPagina
+        }
       </div>
     );
   }
@@ -42,7 +60,8 @@ class MusicCard extends Component {
 MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
-  trackId: PropTypes.string.isRequired,
+  trackId: PropTypes.number.isRequired,
+  arrayMusicas: PropTypes.arrayOf.isRequired,
 };
 
 export default MusicCard;
