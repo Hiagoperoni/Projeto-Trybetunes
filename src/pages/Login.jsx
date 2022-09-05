@@ -28,12 +28,20 @@ export default class Login extends React.Component {
     });
   };
 
+  mudarRequisicao = () => {
+    const { requisicao } = this.state;
+    console.log(requisicao);
+    this.salvarEMudarPage();
+    return <Redirect to="/search" />;
+  };
+
   salvarEMudarPage = async () => {
     const { userName, requisicao } = this.state;
-    this.setState({ loading: true });
-    await createUser({ name: userName });
     console.log(requisicao);
-    this.setState({ requisicao: true });
+    this.setState({ loading: true });
+    await createUser({ name: userName })
+      .then(() => { this.setState({ requisicao: true }); });
+    this.setState({ loading: false });
   };
 
   render() {
@@ -56,10 +64,7 @@ export default class Login extends React.Component {
             type="button"
             data-testid="login-submit-button"
             disabled={ canEnter }
-            // onClick={
-            //   () => { createUser({ name: userName }); this.setState({ loading: true }); }
-            // }
-            onClick={ this.salvarEMudarPage }
+            onClick={ this.mudarRequisicao }
           >
             Entrar
           </button>

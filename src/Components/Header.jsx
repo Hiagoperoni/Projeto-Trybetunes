@@ -1,11 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
+import { getUser } from '../services/userAPI';
+import Loading from './Loading';
 
 class Header extends React.Component {
+  state = {
+    loading: true,
+    nomeUsuario: '',
+  };
+
+  componentDidMount() {
+    this.montarCabecalho();
+  }
+
+  montarCabecalho = async () => {
+    const { loading } = this.state;
+    console.log(loading);
+    await this.pegarUserName()
+      .then(() => { this.setState({ loading: false }); });
+  };
+
+  pegarUserName = async () => {
+    const { nomeUsuario } = this.state;
+    console.log(nomeUsuario);
+    const infoUsuario = await getUser();
+    const nomeUser = infoUsuario.name;
+    this.setState({ nomeUsuario: nomeUser });
+  };
+
   render() {
-    const { nomeCabecalho } = this.props;
-    return (
+    const { loading, nomeUsuario } = this.state;
+    this.montarCabecalho();
+    const cabecalho = (
       <header data-testid="header-component">
         <Link to="/search" data-testid="link-to-search">
           <p>Buscar</p>
@@ -16,14 +42,16 @@ class Header extends React.Component {
         <Link to="/profile" data-testid="link-to-profile">
           <p>Perfil</p>
         </Link>
-        <p data-testid="header-user-name">{ nomeCabecalho }</p>
-      </header>
+        <p data-testid="header-user-name">{ nomeUsuario }</p>
+      </header>);
+    return (
+      <div>
+        {
+          loading ? <Loading /> : cabecalho
+        }
+      </div>
     );
   }
 }
-
-Header.propTypes = {
-  nomeCabecalho: PropTypes.string.isRequired,
-};
 
 export default Header;
