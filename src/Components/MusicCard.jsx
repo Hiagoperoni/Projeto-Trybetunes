@@ -6,7 +6,6 @@ import Loading from './Loading';
 class MusicCard extends Component {
   state = {
     carregando: false,
-    adicionouFavoritas: false,
   };
 
   pegarMusicas = async (trackId) => {
@@ -20,7 +19,7 @@ class MusicCard extends Component {
 
   render() {
     const { trackName, previewUrl, trackId } = this.props;
-    const { carregando, adicionouFavoritas } = this.state;
+    const { carregando } = this.state;
     const montarPagina = (
       <div>
         <h4>{trackName}</h4>
@@ -43,12 +42,8 @@ class MusicCard extends Component {
           />
         </label>
       </div>);
-    // const carregarPagina = carregando ? <Loading /> : montarPagina;
     return (
       <div>
-        {/* {
-          adicionouFavoritas ? montarPagina : carregarPagina
-        } */}
         {
           carregando ? <Loading /> : montarPagina
         }
