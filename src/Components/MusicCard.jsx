@@ -1,34 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
   state = {
     carregando: false,
-    musicasSalvas: '',
   };
 
   pegarMusicas = async (trackId) => {
     const { arrayMusicas } = this.props;
     this.setState({ carregando: true });
     const musicaEscolhida = arrayMusicas.filter((aMusica) => aMusica.trackId === trackId);
-    await addSong(musicaEscolhida);
+    await addSong(musicaEscolhida[0]);
     localStorage.setItem(trackId, true);
     this.setState({ carregando: false });
-  };
-
-  verificarSeEstaMarcada = (trackId) => {
-    if (localStorage.getItem(trackId)) {
-      return true;
-    }
-  };
-
-  recuperarListaSalva = async () => {
-    const { musicasSalvas } = this.state;
-    const listaDeSalvas = await getFavoriteSongs();
-    this.setState({ musicasSalvas: listaDeSalvas });
-    console.log(musicasSalvas);
   };
 
   render() {
@@ -50,7 +36,7 @@ class MusicCard extends Component {
           <input
             id="favoritar"
             type="checkbox"
-            checked={ this.verificarSeEstaMarcada(trackId) }
+            checked={ JSON.parse(localStorage.getItem(trackId)) }
             data-testid={ `checkbox-music-${trackId}` }
             onChange={ () => this.pegarMusicas(trackId) }
           />
@@ -61,7 +47,6 @@ class MusicCard extends Component {
         {
           carregando ? <Loading /> : montarPagina
         }
-        <button type="button" onClick={ this.recuperarListaSalva }>Salvas</button>
       </div>
     );
   }

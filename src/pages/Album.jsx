@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../Components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../Components/MusicCard';
+import Loading from '../Components/Loading';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   state = {
@@ -10,11 +12,29 @@ class Album extends React.Component {
     imagemAlbum: '',
     nomeAlbum: '',
     todasAsMusicas: [],
+    musicasSalvas: '',
+    carregando: false,
   };
 
   componentDidMount() {
     this.pegarObjetoMusicas();
+    this.recuperarListaSalva();
   }
+
+  recuperarListaSalva = async () => {
+    this.setState({ carregando: true });
+    const listaDeSalvas = await getFavoriteSongs();
+    this.setState({ musicasSalvas: listaDeSalvas });
+    listaDeSalvas.forEach(({ trackId }) => localStorage.setItem(trackId, true));
+    this.setState({ carregando: false });
+    const { musicasSalvas } = this.state;
+    console.log(musicasSalvas);
+  };
+
+  // verificarSeFoiSalva = () => {
+  //   const {  }
+  //   const arrayDeSalvas =
+  // };
 
   pegarObjetoMusicas = async () => {
     const { match: { params: { id } } } = this.props;
@@ -33,7 +53,8 @@ class Album extends React.Component {
   };
 
   render() {
-    const { nomeArtista, imagemAlbum, nomeAlbum, todasAsMusicas } = this.state;
+    const { nomeArtista, imagemAlbum,
+      nomeAlbum, todasAsMusicas, carregando } = this.state;
     const montarTudo = (
       <div>
         <img src={ imagemAlbum } alt={ nomeAlbum } />
@@ -63,7 +84,7 @@ class Album extends React.Component {
       <div data-testid="page-album">
         <Header />
         {
-          montarTudo
+          carregando ? <Loading /> : montarTudo
         }
       </div>
     );
