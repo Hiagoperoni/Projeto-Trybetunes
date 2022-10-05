@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(126, 125, 125);
 }
 
 code {
@@ -21,5 +22,230 @@ code {
 header {
   display: flex;
   justify-content: space-around;
-  background-color: lightseagreen;
+  background-color: rgb(189, 21, 68);
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 99.9%;
+  box-shadow: 0px 5px 5px;
+}
+
+.paginaLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 30%;
+  height: 40%;
+  padding-bottom: 2%;
+  justify-content: center;
+  margin-top: 10%;
+  box-shadow: 5px 5px 5px;
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  padding: 4%;
+  margin: 4%;
+}
+
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nomeLogin {
+  font-size: 24px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-shadow: 1px 1px 1px black;
+}
+
+.loginButton {
+  height: 2em;
+  font-size: 18px;
+}
+
+.blocoNomeLogin {
+  background-color: rgb(88, 87, 87);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid black;
+  box-shadow: 0px 0px 5px;
+}
+
+#userName {
+  margin-bottom: 10%;
+  border-radius: 5px;
+  height: 1.5em;
+}
+
+.headerGeral {
+  display: flex;
+  flex-direction: column;
+}
+
+.nomesHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.linksHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 2px solid black;
+}
+
+.navLinks {
+  border-right: 2px solid black;
+  width: 33%;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.nomeUsuario {
+  font-size: 24px;
+  text-align: center;
+}
+
+.semBorda {
+  width: 33%;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.formSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.localSearch {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-top: 3%;
+  font-size: 20px;
+}
+
+#nomeArtista {
+  width: 200%;
+  border-radius: 5px;
+  height: 2em;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  box-shadow: 5px 5px 5px;
+}
+
+#searchButton {
+  width: 30%;
+  border-radius: 5px;
+  height: 2em;
+  background-color: rgb(98, 97, 97);
+  border: 2px solid black;
+  font-size: 16px;
+  box-shadow: 5px 5px 5px;
+}
+
+.resultadoAlbuns {
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  font-size: 20px;
+}
+
+.cadaAlbum {
+  border: 2px solid black;
+  width: 25%;
+  margin: 2%;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgb(188, 188, 188);
+  box-shadow: 10px 10px 10px;
+}
+
+.albuns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.imgAlbum {
+  border-radius: 2px;
+  margin-top: 5%;
+}
+
+.nomeAlbum {
+  border-top: 2px solid black;
+  padding-top: 10%;
+  color: black;
+  text-decoration: none;
+}
+
+.nomeArtista {
+  color: black;
+  text-decoration: none;
+}
+
+.imgAlbum2 {
+  border-radius: 2px;
+  margin-top: 5%;
+  width: 10%;
+  border: 2px solid black;
+  box-shadow: 5px 2px 5px;
+}
+
+.albumPage {
+  margin-left: 2%;
+}
+
+.artistName {
+  font-size: 20px;
+  text-shadow: 1px 1px 5px black;
+}
+
+.cadaMusica {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 30%;
+  margin-top: 1%;
+  margin-right: 1%;
+  background-color: rgb(188, 188, 188);
+}
+
+.musicas {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 3%;
+}
+
+.estilizarCadaMusica {
+  display: flex;
+  flex-direction: row;
+}
+
+.dadosAlbum {
+  text-align: center;
+}
+
+.nomeReprodutor {
+  margin-left: 5%;
+  padding-bottom: 1%;
+}
+
+.favoritar {
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
 }

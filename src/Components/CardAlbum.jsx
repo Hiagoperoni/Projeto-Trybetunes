@@ -6,9 +6,9 @@ class CardAlbum extends Component {
     const { imagem, nomeAlbum, nomeDoArtista, collectionId } = this.props;
     return (
       <section data-testid={ `link-to-album-${collectionId}` }>
-        <img src={ imagem } alt={ nomeAlbum } />
-        <h3>{ nomeAlbum }</h3>
-        <h5>{ nomeDoArtista }</h5>
+        <img src={ imagem } alt={ nomeAlbum } className="imgAlbum" />
+        <h3 className="nomeAlbum">{ nomeAlbum }</h3>
+        <h5 className="nomeArtista">{ nomeDoArtista }</h5>
       </section>
     );
   }

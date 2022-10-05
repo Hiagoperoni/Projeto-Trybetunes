@@ -28,17 +28,22 @@ class Header extends React.Component {
     const { loading, nomeUsuario } = this.state;
     this.montarCabecalho();
     const cabecalho = (
-      <header data-testid="header-component">
-        <Link to="/search" data-testid="link-to-search">
-          <p>Buscar</p>
-        </Link>
-        <Link to="/favorites" data-testid="link-to-favorites">
-          <p>Musicas Favoritas</p>
-        </Link>
-        <Link to="/profile" data-testid="link-to-profile">
-          <p>Perfil</p>
-        </Link>
-        <p data-testid="header-user-name">{ nomeUsuario }</p>
+      <header data-testid="header-component" className="headerGeral">
+        <div className="nomesHeader">
+          <h1>TrybeTunes</h1>
+          <p data-testid="header-user-name" className="nomeUsuario">{ nomeUsuario }</p>
+        </div>
+        <div className="linksHeader">
+          <Link to="/search" data-testid="link-to-search" className="navLinks">
+            <p>Buscar</p>
+          </Link>
+          <Link to="/favorites" data-testid="link-to-favorites" className="navLinks">
+            <p>Musicas Favoritas</p>
+          </Link>
+          <Link to="/profile" data-testid="link-to-profile" className="semBorda">
+            <p>Perfil</p>
+          </Link>
+        </div>
       </header>);
     return (
       <div>

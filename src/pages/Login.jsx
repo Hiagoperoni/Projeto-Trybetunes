@@ -47,25 +47,36 @@ export default class Login extends React.Component {
       return <Redirect to="/search" />;
     }
     const conteudoLogin = (
-      <div data-testid="page-login">
-        <p>Login</p>
-        <form>
-          <input
-            id="userName"
-            name="userName"
-            type="text"
-            data-testid="login-name-input"
-            onChange={ this.mudarEstado }
-          />
-          <button
-            type="button"
-            data-testid="login-submit-button"
-            disabled={ canEnter }
-            onClick={ this.mudarRequisicao }
-          >
-            Entrar
-          </button>
-        </form>
+      <div data-testid="page-login" className="loginPage">
+        <header>
+          <h1>TrybeTunes</h1>
+        </header>
+        <div className="paginaLogin">
+          <div className="blocoNomeLogin">
+            <p className="nomeLogin">Login</p>
+          </div>
+          <form className="formLogin">
+            <input
+              id="userName"
+              name="userName"
+              type="text"
+              className="nomeUsuario"
+              data-testid="login-name-input"
+              placeholder="Nome de Usuário"
+              onChange={ this.mudarEstado }
+            />
+            <button
+              type="button"
+              id="buttonLogin"
+              className="loginButton"
+              data-testid="login-submit-button"
+              disabled={ canEnter }
+              onClick={ this.mudarRequisicao }
+            >
+              Entrar
+            </button>
+          </form>
+        </div>
       </div>);
     return (
       <div>

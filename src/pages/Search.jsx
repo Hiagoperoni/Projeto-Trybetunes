@@ -41,19 +41,22 @@ class Search extends React.Component {
   render() {
     const { canSearch, loading, pesquisaFeita, albuns, nomeArtista } = this.state;
     const formularioDePesquisa = (
-      <form>
-        <label htmlFor="nomeArtista">
-          Buscar Album:
-          <input
-            type="text"
-            id="nomeArtista"
-            name="nomeArtista"
-            data-testid="search-artist-input"
-            onChange={ this.mudarEstado }
-          />
-        </label>
+      <form className="formSearch">
+        <div className="localSearch">
+          <label htmlFor="nomeArtista" className="localSearch">
+            Buscar Album
+            <input
+              type="text"
+              id="nomeArtista"
+              name="nomeArtista"
+              data-testid="search-artist-input"
+              onChange={ this.mudarEstado }
+            />
+          </label>
+        </div>
         <button
           type="button"
+          id="searchButton"
           data-testid="search-artist-button"
           disabled={ canSearch }
           onClick={ this.buscarArtista }
@@ -64,23 +67,25 @@ class Search extends React.Component {
     const todosOsAlbuns = (
       <div>
         {formularioDePesquisa}
-        <p>
+        <p className="resultadoAlbuns">
           {`Resultado de álbuns de: ${nomeArtista}`}
         </p>
-        <ul>
+        <ul className="albuns">
           {
             albuns.map((cadaAlbum) => (
-              <Link
-                to={ `/album/${cadaAlbum.collectionId}` }
-                key={ cadaAlbum.collectionName }
-              >
-                <CardAlbum
-                  collectionId={ cadaAlbum.collectionId }
-                  imagem={ cadaAlbum.artworkUrl100 }
-                  nomeAlbum={ cadaAlbum.collectionName }
-                  nomeDoArtista={ cadaAlbum.artistName }
-                />
-              </Link>
+              <div key={ cadaAlbum.collectionName } className="cadaAlbum">
+                <Link
+                  to={ `/album/${cadaAlbum.collectionId}` }
+                  key={ cadaAlbum.collectionName }
+                >
+                  <CardAlbum
+                    collectionId={ cadaAlbum.collectionId }
+                    imagem={ cadaAlbum.artworkUrl100 }
+                    nomeAlbum={ cadaAlbum.collectionName }
+                    nomeDoArtista={ cadaAlbum.artistName }
+                  />
+                </Link>
+              </div>
             ))
           }
         </ul>

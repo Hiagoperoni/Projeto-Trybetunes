@@ -31,11 +31,6 @@ class Album extends React.Component {
     console.log(musicasSalvas);
   };
 
-  // verificarSeFoiSalva = () => {
-  //   const {  }
-  //   const arrayDeSalvas =
-  // };
-
   pegarObjetoMusicas = async () => {
     const { match: { params: { id } } } = this.props;
     const arrayMusicas = [];
@@ -56,28 +51,35 @@ class Album extends React.Component {
     const { nomeArtista, imagemAlbum,
       nomeAlbum, todasAsMusicas, carregando } = this.state;
     const montarTudo = (
-      <div>
-        <img src={ imagemAlbum } alt={ nomeAlbum } />
-        <p data-testid="artist-name">
-          Artist Name:
-          {' '}
-          {nomeArtista}
-        </p>
-        <p data-testid="album-name">
-          Collection Name:
-          {' '}
-          {nomeAlbum}
-        </p>
-        {
-          todasAsMusicas.map((cadaMusica) => (
-            <MusicCard
-              arrayMusicas={ todasAsMusicas }
-              key={ cadaMusica.trackName }
-              trackName={ cadaMusica.trackName }
-              previewUrl={ cadaMusica.previewUrl }
-              trackId={ cadaMusica.trackId }
-            />))
-        }
+      <div className="albumPage">
+        <div className="dadosAlbum">
+          <img src={ imagemAlbum } alt={ nomeAlbum } className="imgAlbum2" />
+          <p data-testid="artist-name" className="artistName">
+            Artist Name:
+            {' '}
+            {nomeArtista}
+          </p>
+          <p data-testid="album-name" className="artistName">
+            Collection Name:
+            {' '}
+            {nomeAlbum}
+          </p>
+        </div>
+        <div className="musicas">
+          {
+            todasAsMusicas.map((cadaMusica) => (
+              <div key={ cadaMusica.trackName } className="cadaMusica">
+                <MusicCard
+                  img={ cadaMusica.artworkUrl100 }
+                  arrayMusicas={ todasAsMusicas }
+                  key={ cadaMusica.trackName }
+                  trackName={ cadaMusica.trackName }
+                  previewUrl={ cadaMusica.previewUrl }
+                  trackId={ cadaMusica.trackId }
+                />
+              </div>))
+          }
+        </div>
       </div>
     );
     return (
